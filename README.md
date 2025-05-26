@@ -1,64 +1,117 @@
 Estrutura do Projeto e Paradigma Orientado a Objetos
+
 Organização o projeto em classes bem definidas, encapsulando dados e comportamentos, conforme o paradigma orientado a objetos.
 
 Classes Principais
 Usuario: Representa um usuário do sistema.
 
 Atributos:
+
 id (String - gerado automaticamente, UUID)
+
 nome (String)
+
 email (String)
+
 cidade (String) - assumindo que a cidade de residência é a mesma dos eventos
+
 eventosConfirmados (List&lt;Evento>) - lista de eventos que o usuário confirmou presença.
+
 Métodos:
+
 Construtor
+
+
 Getters para todos os atributos
+
 confirmarPresenca(Evento evento)
+
 cancelarPresenca(Evento evento)
+
 visualizarEventosConfirmados()
+
 equals() e hashCode() (para comparação baseada no id ou email)
+
 Evento: Representa um evento na cidade.
 
 Atributos:
+
 id (String - gerado automaticamente, UUID)
+
 nome (String)
+
 endereco (String)
+
 categoria (CategoriaEvento - um enum)
+
 horario (LocalDateTime - ideal para data e hora)
+
 descricao (String)
+
 Métodos:
+
 Construtor
+
 Getters para todos os atributos
+
 toString() (para exibição amigável)
+
 equals() e hashCode() (para comparação baseada no id)
+
 CategoriaEvento: enum para delimitar as categorias de eventos.
 
-Valores sugeridos: FESTA, ESPORTIVO, SHOW, CULTURAL, EDUCACIONAL, GASTRONOMICO, OUTROS.
-SistemaEventos: Classe principal que orquestra as operações do sistema.
+Valores sugeridos: 
+
+FESTA, ESPORTIVO, SHOW, CULTURAL, EDUCACIONAL, GASTRONOMICO, OUTROS.
+
+SistemaEventos: 
+
+Classe principal que orquestra as operações do sistema.
 
 Atributos:
+
 usuarios (List&lt;Usuario>)
+
 eventos (List&lt;Evento>)
+
 scanner (Scanner - para entrada do usuário)
+
 currentUser (Usuario - o usuário logado no momento)
+
 Métodos:
+
 inicializar(): Carrega dados do arquivo events.data.
+
 salvarEventos(): Salva os eventos no arquivo events.data.
+
 cadastrarUsuario()
+
 loginUsuario()
+
 cadastrarEvento()
+
 consultarEventosDisponiveis()
+
 confirmarParticipacao()
+
 cancelarParticipacao()
+
 visualizarMeusEventos()
+
 ordenarEventosPorHorario()
+
 verificarStatusEventos() (Eventos em andamento, futuros, passados)
+
 exibirMenuPrincipal()
+
 GerenciadorArquivo: Classe utilitária para lidar com a leitura e escrita do arquivo events.data.
 
 Métodos estáticos:
+
 carregarEventos(String nomeArquivo): Retorna uma List<Evento>.
+
 salvarEventos(String nomeArquivo, List<Evento> eventos): Salva a lista de eventos.
+
 (Opcional) Métodos para salvar/carregar usuários, se o cadastro de usuário precisar de persistência além da sessão. Por simplicidade inicial, podemos focar a persistência apenas em eventos.
 
 Diagrama de Classes (Esboço)
